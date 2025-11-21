@@ -1,7 +1,7 @@
 import sys
 import random
 
-from src.types import *
+from src.types import GameState, PlayerState, Position, LEFT, UP, RIGHT, DOWN
 
 
 def choose_move(game_state: GameState) -> int:
@@ -35,6 +35,19 @@ def main():
                 break  # Server has closed the connection
 
             # 2. Parse the game state
+            """
+            To access the game state, you can use the 'game_state' object.
+            The game state has the following attributes:
+            - board_size: int
+            - me: PlayerState
+            - opponent: PlayerState
+            - board: list[list[int]]
+
+            To access them, you can use dot notation, e.g. game_state.board_size
+
+            If you want to see the full structure of the GameState object,
+            check out src/types.py
+            """
             game_state = GameState.from_json(data)
 
             # 3. Choose a move
